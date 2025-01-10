@@ -19,3 +19,15 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media print {
+  button {
+    display: none; /* 버튼 숨김 */
+  }
+
+  body {
+    font-size: 12px; /* 프린트용 폰트 크기 */
+  }
+
+  /* 필요한 경우 다른 스타일 추가 */
+}
