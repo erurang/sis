@@ -99,24 +99,6 @@ export default function QuotationRequestPage() {
     setKoreanAmount(numberToKorean(total));
   };
 
-  const handleItemChange = (index: number, field: string, value: any) => {
-    setItems((prev) =>
-      prev.map((item, i) =>
-        i === index
-          ? {
-              ...item,
-              [field]: value,
-              amount:
-                field === "quantity" || field === "unit_price"
-                  ? item.quantity *
-                    (field === "unit_price" ? value : item.unit_price)
-                  : item.unit_price * item.quantity,
-            }
-          : item
-      )
-    );
-  };
-
   const numberToKorean = (num: number): string => {
     const units = ["", "십", "백", "천"];
     const bigUnits = ["", "만", "억", "조", "경"];
@@ -286,7 +268,7 @@ export default function QuotationRequestPage() {
       <input
         type="date"
         value={requestDate}
-        readOnly
+        onChange={(e) => setRequestDate(e.target.value)}
         style={{ display: "block", width: "100%", marginBottom: "10px" }}
       />
 
